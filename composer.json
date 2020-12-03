@@ -1,0 +1,23 @@
+{
+    "name": "webandcow/challenge",
+    "description": "My template for PHP project",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "~7.3"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.4",
+        "phpunit/phpunit": "^9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "WebAndCow\\Challenge\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WebAndCow\\Challenge\\tests\\": "tests/"
+        }
+    }
+}
