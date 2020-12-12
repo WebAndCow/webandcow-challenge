@@ -10,6 +10,7 @@ final class Game
     private const LAUNCH_URL = 'games/launch/%1$s/%2$s'; // %1$s : key, %2$s : codeEngin
     private const INIT_URL = 'games/init/%s'; // %s : token
     private const PUSH_URL = 'games/push/%1$s/%2$s'; // %1$s : token, %2$s : $reponse in base64
+    private const TOKEN_URL = 'games/story/%1$s';
 
     private $codeEngine;
     private $key;
@@ -41,7 +42,9 @@ final class Game
         $dataPlayer = base64_encode(json_encode($response));
         $data = $this->requestApi(sprintf(self::PUSH_URL, $this->token, $dataPlayer));
 
-        return new Result($this->token, $data);
+        $tokenUrl = $this->generateTokenUrl($this->token);
+
+        return new Result($tokenUrl, $data);
     }
 
     private function requestApi(string $url): array
@@ -56,5 +59,10 @@ final class Game
         assert(isset($data['data']));
 
         return $data['data'];
+    }
+
+    private function generateTokenUrl(string $token): string
+    {
+        return sprintf(self::BASE_URL.self::TOKEN_URL, $this->token);
     }
 }

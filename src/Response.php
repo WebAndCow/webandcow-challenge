@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace WebAndCow\Challenge;
 
-class Response
+class Response implements \JsonSerializable
 {
     private $response;
 
@@ -13,7 +13,7 @@ class Response
         $this->response = $response;
     }
 
-    public function __serialize()
+    public function jsonSerialize()
     {
         return ['reponse' => $this->response];
     }
