@@ -22,7 +22,7 @@ final class Game
         $this->codeEngine = $codeEngine;
     }
 
-    public function resolveWith(SolutionInterface $solution)
+    public function resolveWith(SolutionInterface $solution): Result
     {
         return $this->push($solution->apply($this->getDatasGame()));
     }
@@ -41,10 +41,10 @@ final class Game
     {
         $dataPlayer = base64_encode(json_encode($response));
         $data = $this->requestApi(sprintf(self::PUSH_URL, $this->token, $dataPlayer));
+        
+        $tokenUrl = sprintf(self::BASE_URL . self::TOKEN_URL, $this->token);
 
-        $tokenUrl = $this->generateTokenUrl($this->token);
-
-        return new Result($tokenUrl, $data);
+        return new Result($data, $tokenUrl);
     }
 
     private function requestApi(string $url): array
@@ -59,10 +59,5 @@ final class Game
         assert(isset($data['data']));
 
         return $data['data'];
-    }
-
-    private function generateTokenUrl(string $token): string
-    {
-        return sprintf(self::BASE_URL.self::TOKEN_URL, $this->token);
     }
 }

@@ -17,4 +17,9 @@ class Response implements \JsonSerializable
     {
         return ['reponse' => $this->response];
     }
+
+    public function getResponse()
+    {
+        return $this->response;
+    }
 }

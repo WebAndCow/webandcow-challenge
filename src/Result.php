@@ -7,20 +7,21 @@ namespace WebAndCow\Challenge;
 class Result
 {
     private $result;
-    private $isSuccess;
     private $tokenUrl;
-    private $message;
 
-    public function __construct(string $tokenUrl, array $result)
+    public function __construct(array $result, ?string $tokenUrl = null)
     {
-        $this->tokenUrl = $tokenUrl;
         $this->result = $result;
-        $this->isSuccess = (bool) $result['success_game'];
-        $this->message = $result['message'];
+        $this->tokenUrl = $tokenUrl;
     }
 
     public function __toString()
     {
-        return sprintf('%1$s : %2$s (%3$s)', $this->isSuccess ? 'OK' : 'ERREUR', $this->message, $this->tokenUrl);
+        return sprintf(
+            '%1$s : %2$s %3$s',
+            ((bool) $this->result['success_game']) ? 'OK' : 'ERREUR',
+            $this->result['message'],
+            $this->tokenUrl ? '(' . $this->tokenUrl . ')' : ''
+        );
     }
 }
