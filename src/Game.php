@@ -21,7 +21,7 @@ final class Game
 
     private function getDatasGame(): array
     {
-        $data = $this->requestApi(sprintf(self::LAUNCH_URL, $_ENV['WEBANDCOW_API_KEY'], $_ENV['WEBANDCOW_CHALLENGE_CODE']));
+        $data = $this->requestApi(sprintf(self::LAUNCH_URL, $_ENV['API_KEY'], $_ENV['CHALLENGE_CODE']));
         $this->token = $data['token'];
 
         $data = $this->requestApi(sprintf(self::INIT_URL, $this->token));
