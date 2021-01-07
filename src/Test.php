@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace WebAndCow\Challenge;
 
-use WebAndCow\Challenge\Utility;
-
 final class Test
 {
     public function resolveWith(SolutionInterface $solution): Result
@@ -54,7 +52,7 @@ final class Test
             throw new \Exception('Missing TEST_DATASET_NUM environment variable');
         }
 
-        $datasetClass = '\WebAndCow\Challenge\DataSet\\' . Utility::toPascalCase($_ENV['CHALLENGE_CODE']) . '\\Dataset' . $_ENV['TEST_DATASET_NUM'];
+        $datasetClass = '\WebAndCow\ChallengeBootstrap\\' . $_GET['challenge'] . '\Dataset\Dataset' . $_ENV['TEST_DATASET_NUM'];
         
         if (!class_exists($datasetClass)) {
             throw new \Exception('Bad TEST_DATASET_NUM environment variable');
