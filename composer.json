@@ -1,11 +1,12 @@
 {
     "name": "webandcow/challenge",
-    "description": "My template for PHP project",
+    "description": "Library to play WebAndCow challenge",
     "type": "project",
     "license": "MIT",
     "require": {
         "php": "~7.3",
-        "ext-json": "*"
+        "ext-json": "*",
+        "symfony/var-dumper": "^5.2"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.4",
