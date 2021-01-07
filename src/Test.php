@@ -8,13 +8,6 @@ use WebAndCow\Challenge\Utility;
 
 final class Test
 {
-    private $codeEngine;
-
-    public function __construct(string $codeEngine)
-    {
-        $this->codeEngine = $codeEngine;
-    }
-
     public function resolveWith(SolutionInterface $solution): Result
     {
         return $this->test($solution->apply($this->getDatasGame()));

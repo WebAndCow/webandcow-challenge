@@ -11,16 +11,8 @@ final class Game
     private const INIT_URL = 'games/init/%s'; // %s : token
     private const PUSH_URL = 'games/push/%1$s/%2$s'; // %1$s : token, %2$s : $reponse in base64
     private const TOKEN_URL = 'games/story/%1$s';
-
-    private $codeEngine;
-    private $key;
+    
     private $token;
-
-    public function __construct(string $key, string $codeEngine)
-    {
-        $this->key = $key;
-        $this->codeEngine = $codeEngine;
-    }
 
     public function resolveWith(SolutionInterface $solution): Result
     {
@@ -29,7 +21,7 @@ final class Game
 
     private function getDatasGame(): array
     {
-        $data = $this->requestApi(sprintf(self::LAUNCH_URL, $this->key, $this->codeEngine));
+        $data = $this->requestApi(sprintf(self::LAUNCH_URL, $_ENV['WEBANDCOW_API_KEY'], $_ENV['WEBANDCOW_CHALLENGE_CODE']));
         $this->token = $data['token'];
 
         $data = $this->requestApi(sprintf(self::INIT_URL, $this->token));
