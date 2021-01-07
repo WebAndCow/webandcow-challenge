@@ -11,7 +11,7 @@ class Dataset
         return $this->datas;
     }
 
-    public function getResult(): string
+    public function getResult()
     {
         return $this->result;
     }

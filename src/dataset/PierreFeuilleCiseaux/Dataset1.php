@@ -12,5 +12,5 @@ final class Dataset1 extends Dataset
         'coups' => 'PFPCPF'
     ];
 
-    protected string $result = 'FCFPFC';
+    protected $result = 'FCFPFC';
 }
