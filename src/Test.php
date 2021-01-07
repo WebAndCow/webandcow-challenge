@@ -10,6 +10,17 @@ final class Test
 {
     public function resolveWith(SolutionInterface $solution): Result
     {
+        $datasetClass = self::getDatasetClass();
+        $dataSet = new $datasetClass;
+
+        echo '<h3>Données d\'entrée</h3>';
+        dump($dataSet->getDatas());
+
+        echo '<hr /><h3>Résultat attendu</h3>';
+        dump($dataSet->getResult());
+
+        echo '<hr /><h3>Votre code</h3>';
+
         return $this->test($solution->apply($this->getDatasGame()));
     }
 
@@ -33,9 +44,7 @@ final class Test
             $data['message'] = 'Le résultat envoyé est le même que celui attendu.<br />';
         }
         
-        $data['message'] .= '
-            Résultat envoyé : ' . $response->getResponse() . '<br />
-            Résultat attendu : ' . $dataSet->getResult();
+        $data['message'] .= 'Résultat envoyé : ' . $response->getResponse();
         return new Result($data);
     }
 
