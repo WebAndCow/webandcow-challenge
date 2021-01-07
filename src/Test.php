@@ -54,7 +54,7 @@ final class Test
             throw new \Exception('Missing WEBANDCOW_TEST_DATASET environment variable');
         }
 
-        $datasetClass = '\WebAndCow\ChallengeBootstrap\DataSet\\' . Utility::toPascalCase($_ENV['WEBANDCOW_CHALLENGE_CODE']) . '\\' . $_ENV['WEBANDCOW_TEST_DATASET'];
+        $datasetClass = '\WebAndCow\Challenge\DataSet\\' . Utility::toPascalCase($_ENV['WEBANDCOW_CHALLENGE_CODE']) . '\\' . $_ENV['WEBANDCOW_TEST_DATASET'];
         
         if (!class_exists($datasetClass)) {
             throw new \Exception('Bad WEBANDCOW_TEST_DATASET environment variable');
