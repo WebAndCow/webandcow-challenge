@@ -48,11 +48,7 @@ final class Test
 
     private static function getDatasetClass()
     {
-        if (!isset($_ENV['TEST_DATASET_NUM'])) {
-            throw new \Exception('Missing TEST_DATASET_NUM environment variable');
-        }
-
-        $datasetClass = '\WebAndCow\ChallengeBootstrap\\' . $_GET['challenge'] . '\Dataset\Dataset' . $_ENV['TEST_DATASET_NUM'];
+        $datasetClass = '\WebAndCow\ChallengeBootstrap\\' . $_GET['challenge'] . '\Dataset\Dataset' . ($_ENV['TEST_DATASET_NUM'] ?? 1);
         
         if (!class_exists($datasetClass)) {
             throw new \Exception('Bad TEST_DATASET_NUM environment variable');
