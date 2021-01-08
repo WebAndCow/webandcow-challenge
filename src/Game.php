@@ -21,7 +21,7 @@ final class Game
 
     private function getDatasGame(): array
     {
-        $data = $this->requestApi(sprintf(self::LAUNCH_URL, $_ENV['API_KEY'], $_GET['challenge']));
+        $data = $this->requestApi(sprintf(self::LAUNCH_URL, $_ENV['API_KEY'], strtoupper(preg_replace('/(?<!^)[A-Z1-9]/', '_$0', $_GET['challenge']))));
         $this->token = $data['token'];
 
         $data = $this->requestApi(sprintf(self::INIT_URL, $this->token));
