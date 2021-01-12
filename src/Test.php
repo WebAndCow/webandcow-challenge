@@ -8,8 +8,7 @@ final class Test
 {
     public function resolveWith(SolutionInterface $solution): Result
     {
-        $datasetClass = self::getDatasetClass();
-        $dataSet = new $datasetClass;
+        $dataSet = self::getDatasetClass();
 
         echo '<h3>Données d\'entrée</h3>';
         dump($dataSet->getData());
@@ -24,16 +23,14 @@ final class Test
 
     private function getDataGame(): array
     {
-        $datasetClass = self::getDatasetClass();
-        $dataSet = new $datasetClass;
+        $dataSet = self::getDatasetClass();
         
         return $dataSet->getData();
     }
 
     private function test(Response $response): Result
     {
-        $datasetClass = self::getDatasetClass();
-        $dataSet = new $datasetClass;
+        $dataSet = self::getDatasetClass();
 
         $data['success_game'] = false;
         $data['message'] = 'Le résultat envoyé n\'est pas le même que celui attendu.<br />';
@@ -54,6 +51,6 @@ final class Test
             throw new \Exception('Bad TEST_DATASET_NUM environment variable');
         }
 
-        return $datasetClass;
+        return new $datasetClass;
     }
 }
