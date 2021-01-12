@@ -12,22 +12,22 @@ final class Test
         $dataSet = new $datasetClass;
 
         echo '<h3>Données d\'entrée</h3>';
-        dump($dataSet->getDatas());
+        dump($dataSet->getData());
 
         echo '<hr /><h3>Résultat attendu</h3>';
         dump($dataSet->getResult());
 
         echo '<hr /><h3>Votre code</h3>';
 
-        return $this->test($solution->apply($this->getDatasGame()));
+        return $this->test($solution->apply($this->getDataGame()));
     }
 
-    private function getDatasGame(): array
+    private function getDataGame(): array
     {
         $datasetClass = self::getDatasetClass();
         $dataSet = new $datasetClass;
         
-        return $dataSet->getDatas();
+        return $dataSet->getData();
     }
 
     private function test(Response $response): Result

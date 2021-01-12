@@ -16,10 +16,10 @@ final class Game
 
     public function resolveWith(SolutionInterface $solution): Result
     {
-        return $this->push($solution->apply($this->getDatasGame()));
+        return $this->push($solution->apply($this->getDataGame()));
     }
 
-    private function getDatasGame(): array
+    private function getDataGame(): array
     {
         $data = $this->requestApi(sprintf(self::LAUNCH_URL, $_ENV['API_KEY'], strtoupper(preg_replace('/(?<!^)[A-Z1-9]/', '_$0', $_GET['challenge']))));
         $this->token = $data['token'];
