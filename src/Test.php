@@ -48,7 +48,7 @@ final class Test
         $datasetClass = '\WebAndCow\ChallengeBootstrap\\' . $_GET['challenge'] . '\Dataset\Dataset' . ($_ENV['TEST_DATASET_NUM'] ?? 1);
         
         if (!class_exists($datasetClass)) {
-            throw new \Exception('Bad TEST_DATASET_NUM environment variable');
+            throw new \Exception('Mauvaise valeur dans la variable d\'environnement TEST_DATASET_NUM');
         }
 
         return new $datasetClass;

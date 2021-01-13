@@ -45,7 +45,7 @@ final class Game
         $data = json_decode($data, true);
 
         if (!$data['success']) {
-            throw new \Exception('Error when contacting API -- ' . print_r($data['errors'], true));
+            throw new \Exception('Erreur lors de la connexion à l\'API -- ' . print_r($data['errors'], true));
         }
 
         assert(isset($data['data']));
