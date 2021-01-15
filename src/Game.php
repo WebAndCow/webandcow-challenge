@@ -11,7 +11,7 @@ final class Game
     private const INIT_URL = 'games/init/%s'; // %s : token
     private const PUSH_URL = 'games/push/%1$s/%2$s'; // %1$s : token, %2$s : $reponse in base64
     private const TOKEN_URL = 'games/story/%1$s';
-    
+
     private $token;
 
     public function resolveWith(SolutionInterface $solution): Result
@@ -33,7 +33,7 @@ final class Game
     {
         $dataPlayer = base64_encode(json_encode($response));
         $data = $this->requestApi(sprintf(self::PUSH_URL, $this->token, $dataPlayer));
-        
+
         $tokenUrl = sprintf(self::BASE_URL . self::TOKEN_URL, $this->token);
 
         return new Result($data, $tokenUrl);
