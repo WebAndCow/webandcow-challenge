@@ -12,11 +12,8 @@ jobs:
       - name: Validate composer.json and composer.json
         run: composer validate
         
-      - name: Install composer²
-        run: composer install
-      
-      - name: Install PHP_CodeSniffer composer package
-        run: composer global require "squizlabs/php_codesniffer=*"
+      - name: Composer install
+        run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Validate PSR-12 Code style
-        run: ~/.composer/vendor/bin/phpcs
+        run: ./vendor/bin/phpcs -p
